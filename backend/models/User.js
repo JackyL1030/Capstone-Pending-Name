@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 // User schema stores employee account information and profile details
 const userSchema = new mongoose.Schema(
@@ -52,6 +53,25 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
+
+// Prevents storing plain-text passwords for security reason
+userSchema.pre("save", async function (next) {
+  try {
+    // If password was not changed, skip hashing
+    if (!this.isModified("password")) return next();
+
+    // Hash password with bcrypt
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(this.password, saltRounds);
+
+    // Replace plain password with hashed version
+    this.password = hashedPassword;
+
+    next();
+  } catch (error) {
+    next(error); // Pass errors to Mongoose error handling middleware
+  }
+});
 
 const User = mongoose.model("User", userSchema);
 export default User;
