@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema(
     },
     // Stores profile image URL
     profilePhoto: {
-      type: String, 
+      type: String,
       default: "",
     },
   },
