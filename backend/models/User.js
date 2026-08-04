@@ -54,23 +54,17 @@ const userSchema = new mongoose.Schema(
   },
 );
 
-// Prevents storing plain-text passwords for security reason
-userSchema.pre("save", async function (next) {
-  try {
-    // If password was not changed, skip hashing
-    if (!this.isModified("password")) return next();
+// Hash password before saving to prevent storing plain-text passwords
+userSchema.pre("save", async function () {
+  // Skip hashing if the password was not changed
+  if (!this.isModified("password")) return;
 
-    // Hash password with bcrypt
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(this.password, saltRounds);
+  // Hash password with bcrypt
+  const saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(this.password, saltRounds);
 
-    // Replace plain password with hashed version
-    this.password = hashedPassword;
-
-    next();
-  } catch (error) {
-    next(error); // Pass errors to Mongoose error handling middleware
-  }
+  // Replace plain password with hashed password
+  this.password = hashedPassword;
 });
 
 const User = mongoose.model("User", userSchema);
