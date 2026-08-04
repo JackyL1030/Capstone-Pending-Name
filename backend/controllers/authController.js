@@ -1,12 +1,13 @@
+import bcrypt from "bcryptjs";
 import User from "../models/User.js";
-import { generateToken } from "../generateToken.js";
+import { generateToken } from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
   try {
     const { name, email, password, employeeId, department, phoneNumber } =
       req.body;
 
-    // Used to check whether an account with the same email already exists in the database
+    // Check whether an account with the same email already exists
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -19,15 +20,57 @@ export const register = async (req, res) => {
       name,
       email,
       password,
-      employee,
+      employeeId,
       department,
       phoneNumber,
     });
 
-    // generate a JWT for the newly registered user 
+    // Generate a JWT for the newly registered user
     const token = generateToken(user);
-    // return the creater user's information along with authentication token
+
+    // Return the created user's information along with authentication token
     res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      department: user.department,
+      token,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find user and explicitly include password because select:false hides it
+    const user = await User.findOne({ email }).select("+password");
+
+    // Prevent user enumeration by using the same error message
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
+    }
+    // Check if the provided password matches the stored hashed password
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
+    }
+
+    // Generate JWT after successful authentication
+    const token = generateToken(user);
+
+    res.status(200).json({
       _id: user._id,
       name: user.name,
       email: user.email,
