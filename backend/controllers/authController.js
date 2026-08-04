@@ -1,17 +1,12 @@
 import User from "../models/User.js";
+import { generateToken } from "../generateToken.js";
 
 export const register = async (req, res) => {
   try {
-    const {
-      name,
-      email,
-      password,
-      employeeId,
-      department,
-      phoneNumber,
-    } = req.body;
+    const { name, email, password, employeeId, department, phoneNumber } =
+      req.body;
 
-    // Used to check whether an account with the same email already exists in the database 
+    // Used to check whether an account with the same email already exists in the database
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
