@@ -107,12 +107,10 @@ export const updateShift = async (req, res) => {
         message: "Start time must be before end time",
       });
     }
-
     // check for scheduling conflict
     const existingShifts = await Shift.find({
       employee: newEmployee,
     });
-
     for (const existingShift of existingShifts) {
       // ignore the shift currently being updated
       if (existingShift._id.toString() === shift._id.toString()) {
@@ -141,6 +139,25 @@ export const updateShift = async (req, res) => {
     }
     await shift.save();
 
+    res.status(200).json(shift);
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
+
+export const cancelShift = async (req, res) => {
+  try {
+    const shift = await Shift.findById(req.params.id);
+    if (!shift) {
+      return res.status(404).json({
+        message: "Shift not found",
+      });
+    }
+    shift.status = "cancelled";
+    await shift.save();
     res.status(200).json(shift);
   } catch (error) {
     res.status(500).json({
