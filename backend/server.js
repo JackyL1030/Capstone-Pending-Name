@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 
 import { connectDB } from "./config/db.js"
+
 import authRoutes from "./routes/authRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import shiftRoutes from "./routes/shiftRoutes.js"

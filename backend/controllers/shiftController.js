@@ -1,4 +1,5 @@
 import Shift from "../models/Shift.js";
+import Department from "../models/Department.js"
 
 export const createShift = async (req, res) => {
   try {
