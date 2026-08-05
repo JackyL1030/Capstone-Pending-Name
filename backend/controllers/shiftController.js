@@ -43,4 +43,22 @@ export const createShift = async (req, res) => {
     });
   }
 };
- 
+
+export const getShifts = async (req, res) => {
+  try {
+    let shifts;
+    if (req.user.role === "manager") {
+      // populate replaces IDs with the referenced documents
+       shifts = await Shift.find({ department: req.user.department })
+        .populate("employee", "name email")
+        .populate("department", "name");
+    } else {
+      shifts = await Shift.find({ employee: req.user.id })
+        .populate("employee", "name email")
+        .populate("department", "name");
+    }
+    res.status(200).json(shifts);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+};
