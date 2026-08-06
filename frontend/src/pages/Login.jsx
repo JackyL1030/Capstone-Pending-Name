@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
 import useAuth from "../context/useAuth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   // browser does not refresh
   const handleSubmit = async (e) => {
@@ -13,12 +16,16 @@ export default function Login() {
 
     try {
       const data = await loginUser(email, password);
-
       // Separate the token from the rest of the user data
       const { token, ...user } = data;
-
       // Save both into AuthContext
       login(user, token);
+      // redirecting based on role 
+      if(user.role === "manager"){
+        navigate("/manager");
+      } else {
+        navigate("/employee")
+      }
     } catch (error) {
       console.log(error.message);
     }
