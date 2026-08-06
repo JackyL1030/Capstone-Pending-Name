@@ -5,6 +5,7 @@ import ManagerDashboard from "./pages/ManagerDashboard";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Unauthorized from "./pages/Unauthorized";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route element={<ProtectedRoute role="employee" />}>
           <Route path="/employee" element={<EmployeeDashboard />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
