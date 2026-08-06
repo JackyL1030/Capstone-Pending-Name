@@ -1,15 +1,23 @@
 import { useState } from "react";
+import { loginUser } from "../services/authService";
+import useAuth from "../context/useAuth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser, setToken } = useAuth();
 
   // browser does not refresh
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email);
-    console.log(password);
+    try {
+      const data = await loginUser(email, password);
+      setUser(data.user);
+      setToken(data.token);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

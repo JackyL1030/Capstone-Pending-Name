@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 // function stores authentication data and makes it available to child components 
-export default function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
     // stores the logged-in user information
     const [user, setUser] = useState(null);
     // stores the JWT token for protected API requests
@@ -17,3 +17,4 @@ export default function AuthProvider({ children }) {
     );
 }
 
+export default AuthContext;
