@@ -8,9 +8,17 @@ export function AuthProvider({ children }) {
   // checks if a saved user exists and restores it after refresh
   const savedUser = localStorage.getItem("user");
 
-  const [user, setUser] = useState(
-    savedUser && savedUser !== "undefined" ? JSON.parse(savedUser) : null,
-  );
+  let initialUser = null;
+
+  try {
+    if (savedUser) {
+      initialUser = JSON.parse(savedUser);
+    }
+  } catch {
+    localStorage.removeItem("user");
+  }
+
+  const [user, setUser] = useState(initialUser);
   // stores the JWT token for protected API requests
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
@@ -19,8 +27,12 @@ export function AuthProvider({ children }) {
     setUser(userData);
     setToken(tokenData);
 
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("token", tokenData);
+    if (userData) {
+      localStorage.setItem("user", JSON.stringify(userData));
+    }
+    if (tokenData) {
+      localStorage.setItem("token", tokenData);
+    }
   };
   // handles user logout by clearing authentication state and removing user data/token
   const logout = () => {

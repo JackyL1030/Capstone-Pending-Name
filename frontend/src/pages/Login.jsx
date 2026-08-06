@@ -13,7 +13,12 @@ export default function Login() {
 
     try {
       const data = await loginUser(email, password);
-      login(data.user, data.token);
+
+      // Separate the token from the rest of the user data
+      const { token, ...user } = data;
+
+      // Save both into AuthContext
+      login(user, token);
     } catch (error) {
       console.log(error.message);
     }
