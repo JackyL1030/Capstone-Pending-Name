@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
 import ManagerDashboard from "./pages/ManagerDashboard";
@@ -10,8 +10,9 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/unauthorized" element={<Unauthorized/>} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
         <Route element={<ProtectedRoute role="manager" />}>
           <Route path="/manager" element={<ManagerDashboard />} />
         </Route>

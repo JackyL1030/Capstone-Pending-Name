@@ -15,7 +15,7 @@ export default function Navbar() {
       <h1>Flexora</h1>
       <div>
         <span>
-          {user.name} ({user.role})
+          {user?.name} ({user?.role})
         </span>
         <button onClick={handleLogout}>Logout</button>
       </div>
