@@ -5,7 +5,7 @@ import useAuth from "../context/useAuth";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser, setToken } = useAuth();
+  const { login } = useAuth();
 
   // browser does not refresh
   const handleSubmit = async (e) => {
@@ -13,8 +13,7 @@ export default function Login() {
 
     try {
       const data = await loginUser(email, password);
-      setUser(data.user);
-      setToken(data.token);
+      login(data.user, data.token);
     } catch (error) {
       console.log(error.message);
     }
