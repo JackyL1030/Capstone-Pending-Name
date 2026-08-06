@@ -9,7 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="manager" element={<ManagerDashboard/> }/>
+        <Route path="/manager" element={<ManagerDashboard />} />
+        <Route path="/employee" element={<EmployeeDashboard />} />
       </Routes>
     </>
   );
