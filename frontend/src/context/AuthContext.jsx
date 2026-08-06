@@ -13,9 +13,27 @@ export function AuthProvider({ children }) {
     const [token, setToken] = useState(
         localStorage.getItem("token") || null
     );
+
+    // handles user login by updating authentication state and saving user data/token for future sessions
+    const login = (userData, tokenData) => {
+        setUser(userData);
+        setToken(tokenData);
+
+        localStorage.setItem("user", JSON.stringify(userData));
+        localStorage.setItem("token", tokenData);
+    }
+    // handles user logout by clearing authentication state and removing saved user data/token
+    const logout = () => {
+        setUser(null);
+        setToken(null);
+
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+    }
+
     // provides authentication data to components wrapped inside AuthProvider
     return (
-        <AuthContext.Provider value={{ user, token, setUser, setToken }}>
+        <AuthContext.Provider value={{ user, token, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
