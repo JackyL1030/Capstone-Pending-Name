@@ -11,7 +11,7 @@ export default function ProtectedRoute({ role }) {
   }
   // checks if the user has the required role for this route
   if (role && user.role !== role) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/unauthorized" />;
   }
   // if authentication and role chcecks pass, allow access to the protected page
   return <Outlet />;
