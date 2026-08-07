@@ -4,7 +4,9 @@ export default function ShiftCalendar() {
       <h2>Weekly Schedule</h2>
 
       <div className="calendar-placeholder">
-        <p>Calendar view coming soon...</p>
+        <div className="calendar-icon">📅</div>
+        <p>Calendar view coming soon.</p>
+        <small>Weekly employee schedules will appear here</small>
       </div>
     </div>
   );
