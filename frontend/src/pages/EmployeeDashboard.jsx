@@ -3,12 +3,15 @@ import Navbar from "../components/Navbar";
 import "../styles/Dashboard.css";
 import SwapRequestForm from "../components/SwapRequestForm";
 import { getShifts } from "../services/shiftService";
+import { getEmployees } from "../services/userService";
 import useAuth from "../context/useAuth";
 
 export default function EmployeeDashboard() {
   const { token } = useAuth();
   const [shifts, setShifts] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
+  // fetch employee shifts
   useEffect(() => {
     const fetchShifts = async () => {
       try {
@@ -22,12 +25,19 @@ export default function EmployeeDashboard() {
     fetchShifts();
   }, [token]);
 
-  const employees = [
-    {
-      _id: "6a737276b4e93f87b0bb11c9",
-      name: "Sarah",
-    },
-  ];
+  // fetch employees for swap requests
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const data = await getEmployees(token);
+        setEmployees(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchEmployees();
+  }, [token]);
 
   return (
     <div className="dashboard-container">
