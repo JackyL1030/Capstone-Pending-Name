@@ -1,0 +1,32 @@
+.unauthorized-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+}
+.unauthorized-card {
+  text-align: center;
+  background-color: var(--surface);
+  padding: 3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.unauthorized-card h1 {
+  color: var(--primary);
+}
+.unauthorized-card p {
+  margin: 1rem 0;
+  color: var(--text-secondary);
+}
+.unauthorized-card button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary);
+  color: var(--surface);
+  cursor: pointer;
+}
+.unauthorized-card button:hover {
+  background-color: var(--primary-dark);
+}
