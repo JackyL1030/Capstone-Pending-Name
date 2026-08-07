@@ -1,18 +1,20 @@
-import useAuth from "../context/useAuth";
 import Navbar from "../components/Navbar";
+import "../styles/Dashboard.css";
 
 export default function EmployeeDashboard() {
-  const { user } = useAuth();
-
   return (
-    <>
+    <div className="dashboard-container">
       <Navbar />
-      <div className="dashboard-container">
-        <h1 className="dashboard-title">Employee Dashboard</h1>
-        <div className="dashboard-card">
-          <p>Your schedule will appear here.</p>
+
+      <h1 className="dashboard-title">Employee Dashboard</h1>
+      <div className="dashboard-card">
+        <h2>My Upcoming Shifts</h2>
+        <div className="shift-card">
+          <h3>Monday</h3>
+          <p>9:00 AM - 5:00 PM</p>
+          <button>Request Swap</button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
