@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/Dashboard.css";
 import SwapRequestForm from "../components/SwapRequestForm";
+import { getShifts } from "../services/shiftService";
+import useAuth from "../context/useAuth";
 
 export default function EmployeeDashboard() {
-  const shiftId = "6a75febf9d5ba1246b86e013";
+  const { token } = useAuth();
+  const [shifts, setShifts] = useState([]);
+
+  useEffect(() => {
+    const fetchShifts = async () => {
+      try {
+        const data = await getShifts(token);
+        setShifts(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchShifts();
+  }, [token]);
 
   const employees = [
     {
@@ -19,11 +36,25 @@ export default function EmployeeDashboard() {
       <h1 className="dashboard-title">Employee Dashboard</h1>
       <div className="dashboard-card">
         <h2>My Upcoming Shifts</h2>
-        <div className="shift-card">
-          <h3>Monday</h3>
-          <p>9:00 AM - 5:00 PM</p>
-          <SwapRequestForm shiftId={shiftId} employees={employees} />
-        </div>
+        {shifts.length === 0 ? (
+          <p>No upcoming shifts.</p>
+        ) : (
+          shifts.map((shift) => (
+            <div className="shift-card" key={shift._id}>
+              <h3>{new Date(shift.startTime).toLocaleDateString()}</h3>
+
+              <p>
+                {new Date(shift.startTime).toLocaleTimeString()}
+                {" - "}
+                {new Date(shift.endTime).toLocaleTimeString()}
+              </p>
+              <p>Department: {shift.department.name}</p>
+              <p>Status: {shift.status}</p>
+
+              <SwapRequestForm shiftId={shift._id} employees={employees} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
