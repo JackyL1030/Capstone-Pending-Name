@@ -1,0 +1,45 @@
+:root {
+  /* Brand colors */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+
+  /* Surfaces */
+  --surface: #ffffff;
+  --background: #f8fafc;
+
+  /* Text */
+  --text-primary: #1f2937;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  /* Borders */
+  --border: #e5e7eb;
+  --border-light: #cbd5e1;
+
+  /* Status */
+  --status-bg: #dbeafe;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius: 10px;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/*Shared form styles*/
+.form-group{
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+}
+.form-group label{
+    margin-bottom: .4rem;
+    font-weight:600
+}
+.form-group input{
+    padding:.75 rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size:1rem;
+}
