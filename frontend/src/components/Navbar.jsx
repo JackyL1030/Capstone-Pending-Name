@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../context/useAuth";
+import "../styles/Dashboard.css"
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -11,13 +12,13 @@ export default function Navbar() {
     navigate("/login");
   };
   return (
-    <nav>
-      <h1>Flexora</h1>
-      <div>
-        <span>
+    <nav className="navbar">
+      <h1 className="logo">Flexora</h1>
+      <div className="navbar-right"> 
+        <span className="user-info">
           {user?.name} ({user?.role})
         </span>
-        <button onClick={handleLogout}>Logout</button>
+        <button className="lougout-btn" onClick={handleLogout} >Logout</button>
       </div>
     </nav>
   );
