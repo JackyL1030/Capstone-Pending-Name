@@ -9,7 +9,7 @@ export default function Unauthorized() {
       <div className="unauthorized-card">
         <h1>Access Denied</h1>
         <p>You do not have permission to view this page.</p>
-        <button onClick={() => navigate("/")}>Return Home</button>
+        <button className="primary-btn" onClick={() => navigate("/")}>Return Home</button>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ export default function ShiftForm() {
             <label htmlFor="endTime">End Time</label>
             <input type="time" id="endTime" />
         </div>
-        <button type="submit">Create Shift</button>
+        <button className="primary-btn" type="submit">Create Shift</button>
       </form>
     </div>
   );

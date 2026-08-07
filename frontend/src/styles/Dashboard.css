@@ -4,9 +4,10 @@
 }
 
 .dashboard-title {
+  margin-top:2rem;
   margin-bottom: 2rem;
   font-size: 2rem;
-  color: #1f2937;
+  color: var(--text-primary);
 }
 
 .dashboard-card {
@@ -60,7 +61,7 @@
 }
 .shift-table td {
   padding: 0.9rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
 }
 .shift-table tbody tr:hover {
   background-color: rgb(248, 250, 252);
@@ -74,8 +75,8 @@
   font-weight: 600;
 }
 .scheduled {
-  background-color: rgb(219, 234, 254);
-  color: #1d4ed8;
+  background-color: var(--status-bg);
+  color: var(--primary-dark);
 }
 
 /*Employee Dashboard*/

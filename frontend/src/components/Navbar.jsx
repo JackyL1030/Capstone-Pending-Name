@@ -18,7 +18,7 @@ export default function Navbar() {
         <span className="user-info">
           {user?.name} ({user?.role})
         </span>
-        <button className="lougout-btn" onClick={handleLogout} >Logout</button>
+        <button className="logout-btn" onClick={handleLogout} >Logout</button>
       </div>
     </nav>
   );

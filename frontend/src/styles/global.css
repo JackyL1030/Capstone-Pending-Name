@@ -25,6 +25,13 @@
 
   /* Shadow */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* Buttons */
+  --button-text: #ffffff;
+
+  /* Input */
+  --input-border: #cbd5e1;
+  --input-focus:#2563eb;
 }
 
 /*Shared form styles*/
@@ -37,9 +44,30 @@
     margin-bottom: .4rem;
     font-weight:600
 }
-.form-group input{
-    padding:.75 rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size:1rem;
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.form-group input:focus {
+  border-color: var(--input-focus);
+}
+
+/* Primary button */
+.primary-btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary);
+  color: var(--button-text);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.primary-btn:hover {
+  background-color: var(--primary-dark);
 }

@@ -22,16 +22,16 @@
 
 .user-info {
   font-weight: 500;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 .logout-btn {
   padding: 0.6rem 1rem;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background-color: var(--primary);
-  color: white;
-  transition: background-color 0.2s ease;
+  color: var(--button-text);
+  cursor: pointer;
 }
 .logout-btn:hover {
   background-color: var(--primary-dark);
