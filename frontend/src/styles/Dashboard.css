@@ -102,3 +102,78 @@
 .shift-card button:hover {
   background-color: var(--primary-dark);
 }
+
+/*Swap Request Table*/
+.swap-table h2 {
+  margin-bottom: 1rem;
+}
+.swap-card {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.swap-card p {
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+.swap-card strong {
+  color: var(--primary);
+}
+.swap-card button {
+  padding: 0.6rem 1rem;
+  margin-right: 0.75rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.swap-card button:first-of-type {
+  background-color: #22c55e;
+  color: white;
+}
+.swap-card button:first-of-type:hover {
+  background-color: #16a34a;
+}
+.swap-card button:last-of-type {
+  background-color: #ef4444;
+  color: white;
+}
+.swap-card button:last-of-type:hover {
+  background-color: #dc2626;
+}
+
+/*Swap Request Form*/
+.swap-request-form {
+  margin-top: 1rem;
+}
+.swap-request-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.swap-request-form select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.swap-request-form button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.swap-request-form button:hover {
+  background-color: var(--primary-dark);
+}

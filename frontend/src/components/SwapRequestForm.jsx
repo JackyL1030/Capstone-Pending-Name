@@ -27,7 +27,7 @@ export default function SwapRequestForm({ shiftId, employees }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="swap-request-form" onSubmit={handleSubmit}>
       <h3>Request Shift Swap</h3>
 
       <select
