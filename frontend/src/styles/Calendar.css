@@ -1,0 +1,25 @@
+/*Calendar Placeholder*/
+.calendar-placeholder {
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin-top:1rem;
+    min-height:300px;
+    border: 2px dashed var(--border-light);
+    border-radius: var(--radius);
+    background-color: var(--background);
+    color: var(--text-secondary);
+}
+.calendar-icon {
+    font-size:3rem;
+    margin-bottom:1rem;
+}
+.calendar-placeholder p {
+    font-size:1.1rem;
+    font-weight:600;
+    margin-bottom:.5rem;
+}
+.calendar-placeholder small {
+    color: var(--text-muted);
+}
