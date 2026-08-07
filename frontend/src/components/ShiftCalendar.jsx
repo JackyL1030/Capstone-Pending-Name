@@ -1,3 +1,5 @@
+import "../styles/Calendar.css"
+
 export default function ShiftCalendar() {
   return (
     <div className="shift-calendar">
