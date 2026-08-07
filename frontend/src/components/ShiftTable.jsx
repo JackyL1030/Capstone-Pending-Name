@@ -20,7 +20,7 @@ export default function ShiftTable() {
             <td>Aug 7</td>
             <td>9:00 AM</td>
             <td>5:00 PM</td>
-            <td>Scheduled</td>
+            <td className="status scheduled" >Scheduled</td>
           </tr>
 
           <tr>
@@ -28,7 +28,7 @@ export default function ShiftTable() {
             <td>Aug 7</td>
             <td>12:00 PM</td>
             <td>8:00 PM</td>
-            <td>Scheduled</td>
+            <td className="status scheduled">Scheduled</td>
           </tr>
 
           <tr>
@@ -36,7 +36,7 @@ export default function ShiftTable() {
             <td>Aug 7</td>
             <td>10:00 AM</td>
             <td>6:00 PM</td>
-            <td>Scheduled</td>
+            <td className="status scheduled">Scheduled</td>
           </tr>
         </tbody>
       </table>
