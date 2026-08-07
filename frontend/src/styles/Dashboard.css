@@ -55,3 +55,10 @@
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8)
 }
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    gap:2rem;
+    margin-bottom:2rem;
+}
