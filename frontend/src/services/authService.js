@@ -1,7 +1,9 @@
-import axios from "axios"
+import axios from "axios";
 
 // base url for authentication api endpoints
 const API_URL = "http://localhost:5000/api/auth";
+
+const USER_API_URL = "http://localhost:5000/api/users";
 
 /**
  * sends login credentials to the backend and returns
@@ -12,5 +14,19 @@ export const loginUser = async (email, password) => {
     email,
     password,
   });
+
+  return response.data;
+};
+
+/**
+ * gets the currently authenticated user
+ */
+export const getMe = async (token) => {
+  const response = await axios.get(`${USER_API_URL}/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   return response.data;
 };
