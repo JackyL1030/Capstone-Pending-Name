@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
 import useAuth from "../context/useAuth";
 
+import "../styles/Login.css"
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,11 +22,11 @@ export default function Login() {
       const { token, ...user } = data;
       // Save both into AuthContext
       login(user, token);
-      // redirecting based on role 
-      if(user.role === "manager"){
+      // redirecting based on role
+      if (user.role === "manager") {
         navigate("/manager");
       } else {
-        navigate("/employee")
+        navigate("/employee");
       }
     } catch (error) {
       console.log(error.message);
@@ -32,23 +34,31 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Log In</button>
-      </form>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Flexora</h1>
+        <p className="login-subtitle">Employee Shift Management</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Log In</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
