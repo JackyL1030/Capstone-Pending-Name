@@ -5,9 +5,14 @@ export default function ManagerDashboard() {
   const { user } = useAuth();
 
   return (
-    <div>
+    <>
       <Navbar />
-      <h1>Manager Dashboard</h1>
-    </div>
+      <div className="dashboard-container">
+        <h1 className="dashboard-title">Manager Dashboard</h1>
+        <div className="dashboard-card">
+          <p>Manager tools will appear here.</p>
+        </div>
+      </div>
+    </>
   );
 }

@@ -5,9 +5,14 @@ export default function EmployeeDashboard() {
   const { user } = useAuth();
 
   return (
-    <div>
+    <>
       <Navbar />
-      <h1>Employee Dashboard</h1>
-    </div>
+      <div className="dashboard-container">
+        <h1 className="dashboard-title">Employee Dashboard</h1>
+        <div className="dashboard-card">
+          <p>Your schedule will appear here.</p>
+        </div>
+      </div>
+    </>
   );
 }
