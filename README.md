@@ -246,6 +246,7 @@ npm run dev
 
 Possible future improvements:
 
+- Add new employees/departments/managers
 - Add loading states
 - Notifications for changes
 - Colors for approved/rejected status
