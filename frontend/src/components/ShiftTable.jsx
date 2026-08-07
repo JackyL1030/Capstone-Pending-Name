@@ -1,4 +1,24 @@
+import { useEffect, useState } from "react";
+import { getShifts } from "../services/shiftService";
+import useAuth from "../context/useAuth";
+
 export default function ShiftTable() {
+  const { token } = useAuth();
+  const [shifts, setShifts] = useState([]);
+
+  useEffect(() => {
+    const fetchShifts = async () => {
+      try {
+        const data = await getShifts(token);
+        setShifts(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchShifts();
+  }, [token]);
+
   return (
     <div className="shift-table">
       <h2>Today's Shifts</h2>
@@ -15,29 +35,15 @@ export default function ShiftTable() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>John Smith</td>
-            <td>Aug 7</td>
-            <td>9:00 AM</td>
-            <td>5:00 PM</td>
-            <td className="status scheduled" >Scheduled</td>
-          </tr>
-
-          <tr>
-            <td>Sarah Lee</td>
-            <td>Aug 7</td>
-            <td>12:00 PM</td>
-            <td>8:00 PM</td>
-            <td className="status scheduled">Scheduled</td>
-          </tr>
-
-          <tr>
-            <td>Tom Smith</td>
-            <td>Aug 7</td>
-            <td>10:00 AM</td>
-            <td>6:00 PM</td>
-            <td className="status scheduled">Scheduled</td>
-          </tr>
+          {shifts.map((shift) => (
+            <tr key={shift._id}>
+              <td>{shift.employee.name}</td>
+              <td>{new Date(shift.startTime).toLocaleDateString()}</td>
+              <td>{new Date(shift.startTime).toLocaleTimeString()}</td>
+              <td>{new Date(shift.endTime).toLocaleTimeString()}</td>
+              <td className={`status ${shift.status}`}>{shift.status}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
