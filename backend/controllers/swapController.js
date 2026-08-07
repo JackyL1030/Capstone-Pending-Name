@@ -11,7 +11,6 @@ export const createSwapRequest = async (req, res) => {
       requestedWith,
     });
     res.status(201).json(swapRequest);
-
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -19,12 +18,18 @@ export const createSwapRequest = async (req, res) => {
   }
 };
 
-
 export const getSwapRequests = async (req, res) => {
-
+  try {
+    const requests = await SwapRequest.find()
+      .populate("requester", "name email")
+      .populate("requestedWith", "name email")
+      .populate("shift");
+    res.status(200).json(requests);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-
-export const updateSwapStatus = async (req, res) => {
-
-};
+export const updateSwapStatus = async (req, res) => {};
