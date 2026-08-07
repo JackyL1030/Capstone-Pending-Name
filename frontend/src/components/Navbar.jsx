@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../context/useAuth";
-import "../styles/Dashboard.css"
+import "../styles/Navbar.css"
 
 export default function Navbar() {
   const { user, logout } = useAuth();
