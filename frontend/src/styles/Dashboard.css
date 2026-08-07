@@ -12,9 +12,10 @@
 
 .dashboard-card {
   background-color: var(--surface);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
 }
 .dashboard-card h2 {
   margin-bottom: 1rem;
@@ -68,8 +69,9 @@
 }
 
 .status {
-  display: inline-block;
-  padding: 0 0.35rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;

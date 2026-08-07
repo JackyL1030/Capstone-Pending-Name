@@ -1,26 +1,29 @@
-/*Calendar Placeholder*/
-.calendar-placeholder {
-    width:100%;
-    display:flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    margin-top:1rem;
-    min-height:300px;
-    border: 2px dashed var(--border-light);
-    border-radius: var(--radius);
-    background-color: var(--background);
-    color: var(--text-secondary);
+.shift-calendar {
+  width: 100%;
 }
-.calendar-icon {
-    font-size:3rem;
-    margin-bottom:1rem;
+
+.shift-calendar h2 {
+  margin-bottom: 1rem;
 }
-.calendar-placeholder p {
-    font-size:1.1rem;
-    font-weight:600;
-    margin-bottom:.5rem;
+
+/* react-big-calendar */
+.rbc-calendar {
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
 }
-.calendar-placeholder small {
-    color: var(--text-muted);
+
+.rbc-toolbar button {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+}
+
+.rbc-toolbar button:hover {
+  background-color: var(--background);
+}
+
+.rbc-event {
+  background-color: var(--primary);
+  border-radius: var(--radius-sm);
 }

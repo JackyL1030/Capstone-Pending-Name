@@ -21,7 +21,7 @@ export default function ShiftTable() {
 
   return (
     <div className="shift-table">
-      <h2>Today's Shifts</h2>
+      <h2>Upcoming Shifts</h2>
 
       <table>
         <thead>
