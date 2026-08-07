@@ -32,7 +32,7 @@ export default function ShiftTable() {
           </tr>
 
           <tr>
-            <td>Mike Brown</td>
+            <td>Tom Smith</td>
             <td>Aug 7</td>
             <td>10:00 AM</td>
             <td>6:00 PM</td>
