@@ -229,23 +229,16 @@ npm run dev
 
 ## Login
 
-![Login Page](./screenshots/login.png)
+![Login Page](./screenshots/login-page.png)
 
 ## Manager Dashboard
 
-![Manager Dashboard](./screenshots/manager-dashboard.png)
+![Manager Dashboard](./screenshots/manager-dashboard-1.png)
+![Manager Dashboard 2](./screenshots/manager-dashboard-2.png)
 
 ## Employee Dashboard
 
 ![Employee Dashboard](./screenshots/employee-dashboard.png)
-
-## Calendar View
-
-![Calendar](./screenshots/calendar.png)
-
-## Swap Requests
-
-![Swap Requests](./screenshots/swap-request.png)
 
 ---
 
